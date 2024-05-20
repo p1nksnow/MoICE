@@ -1,5 +1,4 @@
 #rope moe train OpenHermes balance
-PROJ_PATH_BOLE="/code/lhz/rope_moe/OpenHermes"
 train_script="train-balance.py \
     --model_name_or_path your_model_path \
     --data_path  your_train_json_file \
