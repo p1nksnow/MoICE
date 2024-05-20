@@ -22,16 +22,6 @@ import math
 import time
 import warnings
 from typing import List, Optional, Tuple, Union
-def get_gpu_mem_info(gpu_id=0):
-    """
-    根据显卡 id 获取显存使用信息, 单位 MB
-    :param gpu_id: 显卡 ID
-    :return: total 所有的显存，used 当前使用的显存, free 可使用的显存
-    """
-    mem = torch.cuda.memory_allocated(device=torch.device(f"cuda:{gpu_id}"))
-    return round(mem / 1024 / 1024, 2)
-
-
 import torch
 import torch.nn.functional as F
 import torch.utils.checkpoint
