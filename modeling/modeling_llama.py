@@ -525,6 +525,8 @@ class LlamaFlashAttention2(LlamaAttention):
         mask = torch.zeros_like(routing_weights, dtype=torch.bool)
         mask.scatter_(-1, selected_experts, 1)
         routing_weights = torch.where(mask, routing_weights, 0)
+        # use this selection code when encounter gradient backward error
+        # routing_weights = torch.where(routing_weights >= routing_topk[:,:,:,-1].unsqueeze(-1),routing_weights,0)
         
         
         routing_weights /= routing_weights.sum(dim=-1, keepdim=True)
